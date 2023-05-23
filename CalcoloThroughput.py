@@ -14,7 +14,7 @@ for file in os.listdir(folder):
         os.system(f"tshark -z conv,udp -r {folder}/{file} -q > output.txt")
 
         # Esegue il comando tail, head, tr e awk per estrarre le informazioni desiderate dall'output
-        result = os.popen("tail -2 output.txt | head -1 | tr -s ' ' | awk -F ' ' '{print $11 \",\" $14}'").read().strip()
+        result = os.popen("tail -2 output.txt | head -1 | tr -s ' ' | awk -F ' ' '{print $5 \",\" $14}'").read().strip()
 
         # Aggiunge il risultato alla lista dei risultati
         results.append({"File": file, "Risultato": result})
